@@ -7,33 +7,34 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class UserServiceImpl implements UserService,AutoCloseable {
+    UserDaoJDBCImpl userDaoJDBC=new UserDaoJDBCImpl();
 
     public void createUsersTable() throws SQLException {
-        new UserDaoJDBCImpl().createUsersTable();
+        this.userDaoJDBC.createUsersTable();
     }
 
     @Override
     public void close() throws Exception {
-        new UserDaoJDBCImpl().close();
+        this.userDaoJDBC.close();
     }
 
     public void dropUsersTable() throws SQLException {
-        new UserDaoJDBCImpl().dropUsersTable();
+        this.userDaoJDBC.dropUsersTable();
     }
 
     public void saveUser(String name, String lastName, byte age) throws SQLException {
-        new UserDaoJDBCImpl().saveUser(name,lastName,age);
+        this.userDaoJDBC.saveUser(name,lastName,age);
     }
 
     public void removeUserById(long id) throws SQLException {
-        new UserDaoJDBCImpl().removeUserById(id);
+        this.userDaoJDBC.removeUserById(id);
     }
 
     public List<User> getAllUsers() throws SQLException {
-        return new UserDaoJDBCImpl().getAllUsers();
+        return this.userDaoJDBC.getAllUsers();
     }
 
     public void cleanUsersTable() throws Exception {
-        new UserDaoJDBCImpl().cleanUsersTable();
+        this.userDaoJDBC.cleanUsersTable();
     }
 }
