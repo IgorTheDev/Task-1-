@@ -5,11 +5,14 @@ import jm.task.core.jdbc.service.UserServiceImpl;
 import jm.task.core.jdbc.util.Util;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
         // реализуйте алгоритм здесь
-        try(UserServiceImpl userService = new UserServiceImpl()){
+        try(UserServiceImpl userService = new UserServiceImpl()
+        ){
 
             userService.createUsersTable();
             userService.saveUser("Igor","Sergienko",(byte) 30);
@@ -17,17 +20,13 @@ public class Main {
             userService.saveUser("Dmitriy","Nagiev",(byte) 44);
             userService.saveUser("Ilon","Musk",(byte) 40);
             System.out.println(userService.getAllUsers());
-            userService.cleanUsersTable();
-            userService.dropUsersTable();
+//            userService.cleanUsersTable();
+//            userService.dropUsersTable();
+
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
-
-
-
-
-       
     }
 }
